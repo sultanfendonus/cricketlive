@@ -1,0 +1,28 @@
+.wrapper {
+  height: 66px;
+  width: 60px;
+  padding: 0;
+  overflow: hidden;
+  margin: -15px 4px;
+}
+
+.text-bold{
+  font-weight: bold
+}
+
+.not-out-text-bold{
+  font-weight: bold;
+  color: darkblue
+}
+
+.text-extra-bold{
+  font-size: 20px
+}
+
+.content-center{
+  margin-left: 30%;
+}
+
+.content-center-innings{
+  margin-left: 15%;
+}
