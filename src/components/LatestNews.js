@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import 'antd/dist/antd.css';
 import { Card } from 'antd';
-import {getLatestNews} from '../actions/index'
+import {getLatestNews,saveSingleNews} from '../actions/index'
+import {Link} from 'react-router-dom'
 
 class LatestNews extends Component {
 
@@ -10,19 +11,22 @@ class LatestNews extends Component {
         this.props.getLatestNews();
     }
 
+    saveTheNewsShortDetailsToAction(news){
+        this.props.saveSingleNews(news);
+    }
     
 
     renderLatestNews(){
         return this.props.latestNews.map(news =>{
             return(
-                <div class="card shadow-sm p-1 mb-2 bg-white rounded">
+                <Link to={`/news-details${news.link}`} onClick={()=>this.saveTheNewsShortDetailsToAction(news)} class="card shadow-sm p-1 mb-2 bg-white rounded">
                     <img class="card-img-top img-fluid" src={news.thumbnail} alt={news.title}/>
                     <div class="card-block">
                         <h5 class="card-title m-1">{news.title}</h5>
                         <p class="card-text m-1">{news.discriptions}</p>
                         <p class="card-text m-1"><small class="text-muted">{news.date}</small></p>
                     </div>
-                </div>
+                </Link>
             )
         })
 
@@ -55,4 +59,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect( mapStateToProps, {getLatestNews} )(LatestNews);
+export default connect( mapStateToProps, {getLatestNews,saveSingleNews} )(LatestNews);

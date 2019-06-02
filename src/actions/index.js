@@ -17,6 +17,18 @@ export const getLatestNews = () =>async (dispatch) =>{
     dispatch({type : "LATEST_NEWS",payload: response.data});
 }
 
+export const getDetailsNews = (newsId) =>async (dispatch) =>{
+    const response = await getScore.get('/detailsnews/'+newsId);
+    dispatch({type : "DETAIL_NEWS",payload: response.data});
+}
+
+export const saveSingleNews=(news)=>{
+    return{
+        type : 'SAVE_NEWS',
+        payload : news
+    }
+}
+
 
 export const getMatchInfo = ()=>{
     return{
